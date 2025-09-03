@@ -1,0 +1,286 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autor:        Ramen-Root
+% Fecha:        02/09/2025
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt]{article}                 % Papel tamaño carta, texto de 11pt.
+\usepackage[top=2.5cm, bottom=2cm, left=2.2cm, right=2.2cm]{geometry} % Margenes
+\usepackage[T1]{fontenc}                              % Indicamos la codificación de las fuentes.
+\usepackage[utf8x]{inputenc}                          % Definimos la codificación.
+\usepackage{lmodern}                                  % Para poder usar acentos.
+\usepackage[spanish]{babel}                           % Usaremos idioma español.
+\usepackage{amsmath}                                  % Para formulas matemáticas.
+\usepackage{graphicx}                                 % Para imágenes.
+\usepackage{float}                                    % Para posicionar objetos.
+\usepackage{booktabs}                                 % Para formatear tablas.
+\usepackage{hyperref}                                 % Para enlaces y referencias.
+\usepackage{listings}                                 % Para resaltar códido
+\usepackage{fancyhdr}                                 % Encabezados y pies de página
+\usepackage{xcolor}                                   % Para usar colores
+\fancyhf{}  % Limpiar encabezados y pies de página por defecto
+
+% Encabezado
+\fancyhead[L]{Encabezado Izquierda}  % Izquierda
+\fancyhead[C]{Encabezado Centrado}   % Centro
+\fancyhead[R]{Encabezado Derecha}    % Derecha
+
+% Pie de página
+\fancyfoot[L]{Pie de Página Izquierda}  % Izquierda
+\fancyfoot[C]{Página \thepage}          % Centrado: muestra el número de página
+\fancyfoot[R]{Pie de Página Derecha}    % Derecha
+
+% Configuración del estilo para C++
+\lstdefinestyle{cppstyle}{
+    language=C++,                           % Lenguaje
+    backgroundcolor=\color{white},          % Color de fondo
+    basicstyle=\ttfamily\small,             % Estilo básico de la fuente
+    keywordstyle=\color{blue},              % Color de las palabras clave
+    commentstyle=\color{gray},              % Color de los comentarios
+    stringstyle=\color{red},                % Color de las cadenas
+    numbers=left,                           % Números de línea a la izquierda
+    numberstyle=\tiny\color{gray},          % Estilo de los números de línea
+    stepnumber=1,                           % Cada línea numerada
+    numbersep=5pt,                          % Distancia de los números de línea
+    showspaces=false,                       % No mostrar espacios
+    showstringspaces=false,                 % No mostrar espacios en cadenas
+    showtabs=true,                          % Mostrar tabulaciones
+    tabsize=2,                              % Tamaño de tabulación
+    breaklines=true,                        % Permitir que las líneas largas se dividan
+    breakatwhitespace=true,                 % Romper líneas en espacios si es posible
+    xleftmargin=10pt,                       % Margen izquierdo
+    xrightmargin=10pt,                      % Margen derecho
+    frame=tb,                                % Marco alrededor del código, "none", "single"
+    morekeywords={typedef, nullptr, alignas, static_assert, thread_local, nullptr_t, constexpr, static_cast, dynamic_cast, reinterpret_cast},  % Agregar más palabras clave
+    keywordstyle=\color{blue}\bfseries,     % Colorear las palabras clave en azul y en negrita
+    identifierstyle=\color{black},          % Colorear identificadores en negro
+    commentstyle=\color{gray}\itshape,      % Estilo de los comentarios (cursiva y gris)
+    stringstyle=\color{red}\ttfamily,       % Estilo de las cadenas (rojo y tipo monoespaciado)
+    moredelim=[il][\textbf]{\%\%},          % Resaltar algo en negrita (usado en comentarios o cadenas, si es necesario)
+    emph={MyClass, MyFunction},             % Puedes resaltar clases o funciones específicas
+    emphstyle=\color{green}\itshape        % Estilo para lo resaltado (en este caso en verde y cursiva)
+}
+
+
+
+\def\logoUNAM{%
+  \begin{picture}(0,0)\unitlength=1cm
+    \put (-3.5,-3) {\includegraphics[width=8em]{images/escudo-unam}}
+  \end{picture}
+}
+
+\def\logoFI{%
+  \begin{picture}(0,0)\unitlength=1cm
+    \put (0.5,-3) {\includegraphics[width=8em]{images/escudo-fi}}
+  \end{picture}
+}
+
+\author{xxxxx}                                           % Autor.
+\title{Nombre del curso~\footnote{Aclaraciones}}                        % Titulo del curso.
+\date{26/08/25)}                                                        % Fecha de entrega.
+
+\def\universidad{Universidad Nacional Autónoma de México}               % Nombre de la universidad.
+\def\facultad{Facultad de Ingeniería}                                   % Nombre de la facultad.
+\def\semestre{2024-2}                                                   % Semestre lectivo.
+\def\laboratorio{División de Ingeniería Eléctrica}                      % Nombre de la división.
+\def\carrera{Ingeniería en computación}                                 % Nombre de la carrera.
+\def\asignatura{Computación Gráfica e Interacción Humano Computadora}   % Nombre de la asignatura.
+\makeatletter
+
+\begin{document}
+  % Titulo del documento con logos.
+  \begin{center}
+    \logoUNAM {\Large \universidad} \logoFI\par
+    {\large \facultad}\par
+
+    \laboratorio\par
+    \carrera\par
+    \asignatura
+  \end{center}
+  
+  \vspace{2em} % Espacio adicional antes de la línea del encabezado
+  \hrulefill\par
+
+% Alineación a la derecha solo para el nombre del alumno
+\begin{flushright}
+    {\Huge \textbf{Proyecciones y Puertos de vista}} \\[1em] % Nombre de la práctica, grande y en negritas.
+    %{\Large \textbf{Nombre del curso}} \\[1em] % Nombre del curso en un tamaño más pequeño
+\end{flushright}
+
+\vspace{4em} % Espacio adicional
+
+% Alineación a la izquierda para el resto de la información
+\begin{flushleft}
+    {\Huge \textbf{}} \\[1em] % Nombre del autor 
+    {\Large \textbf{N° de cuenta:}} \\[1em]
+    {\Large \textbf{Grupo de laboratorio: 12}} \\[1em]
+    {\Large \textbf{Grupo de teoría: 1}} \\[1em]
+    {\Large \textbf{Semestre: 2026-1}} \\[1em]
+    {\Large \textbf{Fecha límite de entrega: 02/09/2025}} \\[1em]
+\end{flushleft}
+
+\vspace{20em} % Espacio adicional
+
+\begin{flushright}
+    {\Huge \textbf{Calificación: \_\_\_\_\_ }} \\[1em] % Calificación
+\end{flushright}
+
+\pagenumbering{gobble}                              % Oculta el numero de pagina.
+
+\newpage  
+\tableofcontents                                    % Crea el indice o tabla de contenido.
+
+
+\href{https://github.com/ramen-root/CGIHC}{Aquí el respositorio de GitHub}.
+
+\section{Introducción}
+En la computación gráfica, la representación y manipulación de objetos tridimensionales es una tarea fundamental que requiere el uso de transformaciones geométricas. Estas transformaciones permiten trasladar, rotar, escalar y orientar objetos. En el contexto de gráficos 3D, estas transformaciones se expresan mediante matrices y se aplican a los vértices de los modelos para situarlos correctamente dentro de la escena. En OpenGL moderno, se emplean las bibliotecas de matemáticas como GLM (OpnGL Mathematics) para construir y manipular estas matrices.
+
+\section{Objetivos}
+Esta práctica de laboratorio consiste en el desarrollo de una aplicación gráfica utilizando OpenGL, GLFW, GLEW y GLM, cuyo objetivo principal es representar transformaciones geométricas 3D aplicadas sobre un cubo.
+
+El estudio y aplicación de transformaciones geométricas es fundamental en el ámbito de la computación gráfica, ya que permiten posicionar, rotar, escalar y proyectar objetos en un espacio tridimensional.
+
+Gracias al desarrollo de esta práctica, el estudiante:
+\begin{itemize}
+    \item Aplicará las transformaciones (traslación, rotación, escalado) sobre un objetos 3D.
+    \item Pondrá en práctica habilidades para modular el código (función para dibujar un cubo) y reutilizar lógica para representar múltiples objetos en escena.
+\end{itemize}
+
+El desarrollo de la práctica se realizó utilizando C++ junto con las bibliotecas GLFW (para la creación de ventanas y manejo de eventos), GLEW (para la extensión de funciones de OpenGL) y GLM (para el manejo de vectores y matrices). En estudiante implementó una función modular DrawCube() para aplicar transformaciones específicas (traslación, rotación y escalado) a cada instancia del cubo. Además, se utilizó una proyección en perspectiva para dar realismo a la escena, permitiendo apreciar la profundidad entre los cubos. En el ciclo de renderizado, se dibujaron tres cubos con distintas transformaciones, demostrando el uso correcto de las matrices model, view y projection para controlar la posición y orientación de los objetos en la escena 3D.
+
+\section{Desarrollo}
+Para la actividad de clase, se pidió:
+\begin{itemize}
+    \item Dibujar tres cubos
+    \item Realizarle transformaciones al objeto y explicarlas.
+    \item Una función para automatizar el dibujo y transformación del cubo.
+\end{itemize}
+
+Para realizar la practica empecé con las actividades de ``abajo hacia arriba''. La idea era tener la función lista, así solo la invocaría tres veces para dibujar los cubos, y que los argumentos de la función permitieran realizar las transformaciones.
+La función queda de la siguiente manera:
+% Bloque de código en C++
+\begin{lstlisting}[style=cppstyle]
+void DrawCube(Shader& shader, GLuint VAO, glm::vec3 position, glm::vec3 rotationAxis, float rotationAngle, glm::vec3 scale, glm::mat4& view, glm::mat4& projection) {
+    //Inicialización de la matriz modelo como una matriz identidad
+    glm::mat4 model = glm::mat4(1.0f);
+    
+    //TRANSFORMACIONES
+    //Aplica una traslación al modelo según la posición especificada
+    model = glm::translate(model, position);
+    //Eje de rotación (rotationAxis) y el ángulo (rotationAngle)
+    model = glm::rotate(model, rotationAngle, rotationAxis);
+    // Aplica un escalado al modelo según el vector scale
+    model = glm::scale(model, scale);
+    //ENVIAR MATRICES AL SHADER
+    //Obtener la ubicación de las variables
+    GLint modelLoc = glGetUniformLocation(shader.Program, "model");
+    GLint viewLoc = glGetUniformLocation(shader.Program, "view");
+    //Envía las matrices al shader 
+    GLint projecLoc = glGetUniformLocation(shader.Program, "projection");
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+    glUniformMatrix4fv(projecLoc, 1, GL_FALSE, glm::value_ptr(projection));
+    // DIBUJAR
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+}
+
+\end{lstlisting}
+Tenemos en la función los siguientes argumentos:
+\begin{itemize}
+    \item Shader: El programa de sombreado que contiene los shaders de vértices y fragmentos. 
+    \item VAO: El objeto de arreglo de vértices que contiene los datos del cubo.
+    \item position: Es el vector que define la posición del cubo en el espacio 3D. Los componentes del vector representan las coordenadas $(x,y,z)$ de la posición en el espacio. Se usa la función \textbf{glm::translate()} para aplicarle la traslación al cubo. 
+    \item rotationAxis: El eje alrededor del cual se rota el cubo. Las compones del vector definen el eje, entonces en $(1.0f, 0.0f, 0.0f)$, el cubo rota alrededor del eje $X$; si es $(0.0f, 1.0f, 0.0f)$, rota alrededor del eje $Y$; y si es $(0.0f, 0.0f, 1.0f)$, rota alrededor del eje $Z$. Se usa con \textbf{glm::rotate()} para rotar el cubo alrededor del eje de rotación especificado por este vector.
+    \item rotationAngle: El ángulo de rotación del cubo. Este valor tipo float representa el ángulo de rotación del cubo en radianes. Define cuánto debe rotar el cubo alrededor del eje especificado en rotationAxis.
+    \item scale: Este vector define el factor de escalado del cubo en los tres ejes $(x, y, z)$. Cada componente del vector indica cuánto debe ser escalado el cubo en esa dirección.
+    \item view: La matriz de vista que define la cámara.
+    \item projection: La matriz de proyección que define la forma en que los objetos se proyectan en la pantalla.
+\end{itemize}
+
+Para dibujar los cubos, invocamos la función tres veces:
+% Bloque de código en C++
+\begin{lstlisting}[style=cppstyle]
+    // Cubo 1 IZQUIERDA
+    DrawCube(ourShader, VAO,
+        glm::vec3(-2.0f, 0.0f, 0.0f),   // posición
+        glm::vec3(3.0f, 0.0f, 0.0f),    // rotación
+        0.9f,                           // ángulo
+        glm::vec3(2.0f, 1.0f, 2.0f),    // escala
+        view, projection);
+
+    // Cubo 2 CENTRO
+    DrawCube(ourShader, VAO,
+        glm::vec3(3.0f, 0.0f, -5.0f),   // posición
+        glm::vec3(0.0f, 3.0f, 0.0f),    // rotación
+        0.9f,                           // ángulo
+        glm::vec3(2.0f),                // escala
+        view, projection);
+
+    // Cubo 3 DERECHA
+    DrawCube(ourShader, VAO,
+        glm::vec3(6.0f, 0.0f, -4.0f),   // posición
+        glm::vec3(0.0f, 0.0f, 3.0f),    // rotación
+        0.9f,                           // ángulo
+        glm::vec3(1.0f),                // escala
+        view, projection);
+\end{lstlisting}
+
+Ahora se explicarán las transformaciones aplicadas al cubo:
+\subsection{Cubo izquierda}
+\begin{itemize}
+    \item Posición: El cubo se coloca en las coordenadas $(-2.0f, 0.0f, 0.0f)$, está desplazado $2$ unidades hacia la izquierda en el eje $X$, en el mismo nivel que el eje $Y$ y $Z$ (sin desplazamiento vertical ni en profundidad).  
+    \item Rotación: El cubo se rota alrededor del eje $X$ por un ángulo de $0.9f$ radianes. Esto hará que el cubo gire sobre su eje horizontal. 
+    \item Escala: El cubo es más grande en el eje $X$ y $Z$ (factor $2.0$), pero más pequeño en el eje $Y$ (factor $1.0$). Esto dará lugar a un cubo más alargado en los ejes $X$ y $Z$, se ve un cubo más largo y ancho que alto. 
+\end{itemize}
+\subsection{Cubo centro}
+\begin{itemize}
+    \item Posición: Este cubo está ubicado en $(3.0f, 0.0f, -5.0f)$, lo que significa que se desplazará $3$ unidades hacia la derecha en el eje $X$ y $5$ unidades hacia el fondo en el eje $Z$
+    \item Rotación: El cubo rota alrededor del eje $Y$ (el valor en el vector de rotación es $3.0f$ en el eje $Y$, lo que indica rotación sobre ese eje). Esto hará que el cubo gire sobre su eje vertical.
+    \item Escala: El cubo tiene una escala uniforme en los tres ejes, con un factor de $2.0f$, lo que significa que se duplicará en tamaño en todas las direcciones. Veremos un cubo.
+\end{itemize}
+\subsection{Cubo derecha}
+\begin{itemize}
+    \item Posición: El cubo se coloca en $(6.0f, 0.0f, -4.0f)$, lo que lo ubica $6$ unidades a la derecha en el eje $X$ y $4$ unidades hacia el fondo en el eje $Z$.
+    \item Rotación: Este cubo rota sobre el eje $Z$, dado que el valor en el vector de rotación es $3.0f$ en el eje $Z$. El cubo girará alrededor de su eje profundo.
+    \item Escala: Este cubo tiene una escala uniforme con un valor de $1.0f$ en todos los ejes, por lo que su tamaño no cambia. 
+\end{itemize}
+
+\section{Resultados}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/screenshot.png}
+    \caption{Los tres cubos}
+    \label{fig:imagen1}
+\end{figure}
+
+\section{Conclusiones}
+Resumiendo lo aprendido con respecto a las transformaciones:
+\begin{itemize}
+    \item La traslación mueve un objeto en el espacio; esto se logra sumando un vector de desplazamiento a las coordenadas de cada vértice del objeto. Con \textbf{position = glm::vec3(0.0f, 0.0f, 0.0f)} podemos hacerlo en el programa; en donde el vector representa las coordenadas $(x,y,z)$
+    \item La rotación cambia la orientación de un objeto alrededor de un eje. Necesitamos un ángulo y un eje de rotación. El eje de rotación \textbf{rotationAxis} se define con un vector. Y el ángulo \textbf{rotationAngle} con un valor de tipo float.
+    \item El escalado cambia el tamaño del objeto. Se puede ampliar o reducir el objeto en cada dirección $(x, y, z)$.
+\end{itemize}
+Resumiendo el proceso para dibujar el cubo:
+\begin{itemize}
+    \item Definir los vértices del cubo. Tenemos 6 caras, cada cara formada por dos triángulos, lo que da un total de 36 vértices.
+    \item Se configuran los buffers y el VAO
+    \item OpenGL utiliza shaders para procesar los vértices y fragmentos (pixeles) de los objetos. Necesitamos dos shaders principales:
+    \begin{itemize}
+        \item Vertex Shader: Aplica las transformaciones a los vértices (por ejemplo, traslación, rotación, escalado).
+        \item Fragment Shader: Determina el color de cada fragmento (por ejemplo, colorear el cubo).
+    \end{itemize}
+    \item Se vinculan los shaders.
+    \item Se aplican las transformaciones.
+    \item Es necesario limpiar; después de renderizar, es importante limpiar y manejar el ciclo de renderizado correctamente.
+\end{itemize}
+
+
+\vspace{1cm}
+\noindent\textbf{Referencias}
+\begin{itemize}
+    \item Programarya. (2023). \textit{Funciones en C++}. Recuperado de \url{https://www.programarya.com/Cursos/C++/Funciones}
+\end{itemize}
+
+\end{document}
